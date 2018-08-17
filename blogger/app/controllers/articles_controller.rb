@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
 
 	def index
   		@articles = Article.all
+  		@tags = Tag.all
 	end
 
 	def show
@@ -31,6 +32,7 @@ class ArticlesController < ApplicationController
 
 	def destroy
 		@article = Article.destroy(params[:id])
+		#@tag = Tag.destroy(tag.params[:id])
 		#redirect_to article_path(@articles)
 		flash.notice = "Article '#{@article.title}' deleted!"
 		redirect_to articles_path
