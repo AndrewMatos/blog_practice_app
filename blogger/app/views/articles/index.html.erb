@@ -7,16 +7,20 @@
     </li>
   <% end %>
 </ul>
-
+<% if logged_in? %> 
+<%= link_to "Create a New Article", new_article_path, class: "new_article" %>
+<% end %>
 <br>
 <br>
 <h5>Tags:</h5>
 <ul id="tags">
   <% @tags.each do |tag| %>
-    <li> <%= link_to tag.name, tag_path(tag) %> <%= link_to "-delete tag",  tag_path(tag), method: :delete,data: {confirm: "Really delete this tag?"} %>
+    <li> <%= link_to tag.name, tag_path(tag) %> 
+    	<% if logged_in? %>
+    	<%= link_to "-delete tag",  tag_path(tag), method: :delete,data: {confirm: "Really delete this tag?"} %>
+    	<% end %>
     </li>
   <% end %>
 </ul>
 
 
-<%= link_to "Create a New Article", new_article_path, class: "new_article" %>
